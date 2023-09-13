@@ -1,11 +1,12 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id(Deps.KotlinSerialization.plugin)
+    id(Deps.Dagger.DaggerKaptPlugin)
+
 }
 
 android {
-    namespace = "com.xxmrk888ytxx.pokemonapi"
+    namespace = "com.xxmrk888ytxx.database"
     compileSdk = Config.compileSdk
 
     defaultConfig {
@@ -33,25 +34,21 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = Config.sourceCompatibility
-        targetCompatibility = Config.targetCompatibility
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = Config.jvmTarget
+        jvmTarget = "1.8"
+    }
+    kapt {
+        arguments {
+            arg("room.schemaLocation","$projectDir/schemas")
+        }
     }
 }
 
 dependencies {
-    implementation(project(ProjectModules.CoreAndroid))
-
-    implementation(Deps.KotlinSerialization.serialization)
-    implementation(Deps.Ktor.KtorAndroid)
-    implementation(Deps.Ktor.KtorSerialization)
-    implementation(Deps.Ktor.loggier)
-    implementation(Deps.Ktor.KtorNegotiation)
-
-    //test
-    testImplementation(Deps.TestAndroid.MockkAndroid)
-    testImplementation(Deps.TestAndroid.MockkAgent)
-    testImplementation(Deps.Test.Testing)
+    implementation(Deps.Room.RoomKTX)
+    implementation(Deps.Room.RoomRuntime)
+    kapt(Deps.Room.KaptCompiler)
 }
