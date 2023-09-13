@@ -29,7 +29,6 @@ internal class KtorPokemonApi(
             PokemonListItemRemoteModel(
                 remoteId = getRemoteIdByDetailsUrl(it.url),
                 name = it.name,
-                detailsUrl = it.url
             )
         }
     }

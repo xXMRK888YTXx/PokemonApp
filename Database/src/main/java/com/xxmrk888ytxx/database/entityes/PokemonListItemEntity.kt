@@ -8,6 +8,5 @@ import androidx.room.PrimaryKey
 )
 internal data class PokemonListItemEntity(
     @PrimaryKey val id:Int,
-    val name:String,
-    val urlFromDetail:String
+    val name:String
 )

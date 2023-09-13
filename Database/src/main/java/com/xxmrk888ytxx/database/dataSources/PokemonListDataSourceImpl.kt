@@ -20,10 +20,10 @@ internal class PokemonListDataSourceImpl(
     }
 
     private fun PokemonListItemLocalModel.toEntity() : PokemonListItemEntity {
-        return PokemonListItemEntity(remoteId,name,detailsUrl)
+        return PokemonListItemEntity(remoteId,name)
     }
 
     private fun PokemonListItemEntity.toModel() : PokemonListItemLocalModel {
-        return PokemonListItemLocalModel(id,name,urlFromDetail)
+        return PokemonListItemLocalModel(id,name)
     }
 }

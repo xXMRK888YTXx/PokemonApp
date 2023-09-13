@@ -29,10 +29,10 @@ class PokemonListItemRepositoryImpl @Inject constructor(
     }
 
     private fun PokemonListItemLocalModel.toPokemonItem() : PokemonItem {
-        return PokemonItem(this.remoteId,this.name,this.detailsUrl)
+        return PokemonItem(this.remoteId,this.name)
     }
 
     private fun PokemonListItemRemoteModel.toLocalSourceModel() : PokemonListItemLocalModel {
-        return PokemonListItemLocalModel(remoteId, name, detailsUrl)
+        return PokemonListItemLocalModel(remoteId, name)
     }
 }
