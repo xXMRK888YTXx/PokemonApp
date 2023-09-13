@@ -1,24 +1,17 @@
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id (Deps.Dagger.DaggerKaptPlugin)
 }
 
 android {
-    namespace = "com.xxmrk888ytxx.pokemons"
+    namespace = "com.xxmrk888ytxx.pokemondetailsscreen"
     compileSdk = Config.compileSdk
 
     defaultConfig {
-        applicationId = "com.xxmrk888ytxx.pokemons"
         minSdk = Config.minSdk
-        targetSdk = Config.compileSdk
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -51,23 +44,8 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = Deps.Compose.ComposeKotlinCompiler
     }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
 }
 
 dependencies {
     implementation(project(ProjectModules.CoreCompose))
-    implementation(project(ProjectModules.PokemonListScreen))
-    implementation(project(ProjectModules.PokemonApi))
-    implementation(project(ProjectModules.Database))
-    implementation(project(ProjectModules.PokemonDetailsScreen))
-
-
-    //Navigation
-    implementation(Deps.Compose.Navigation)
-
-    kapt(Deps.Dagger.DaggerKaptCompiler)
 }

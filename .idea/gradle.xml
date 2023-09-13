@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/CoreCompose" />
             <option value="$PROJECT_DIR$/Database" />
             <option value="$PROJECT_DIR$/PokemonApi" />
+            <option value="$PROJECT_DIR$/PokemonDetailsScreen" />
             <option value="$PROJECT_DIR$/PokemonListScreen" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/buildSrc" />
