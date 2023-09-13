@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.compose.AppTheme
 import com.xxmrk888ytxx.pokemons.App
-import com.xxmrk888ytxx.securespace.DI.AppComponent
+import com.xxmrk888ytxx.pokemons.DI.AppComponent
 
 internal val Context.appComponent : AppComponent
     get() = when(this) {

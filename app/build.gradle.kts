@@ -61,6 +61,7 @@ android {
 dependencies {
     implementation(project(ProjectModules.CoreCompose))
     implementation(project(ProjectModules.PokemonListScreen))
+    implementation(project(ProjectModules.PokemonApi))
 
     //Navigation
     implementation(Deps.Compose.Navigation)
