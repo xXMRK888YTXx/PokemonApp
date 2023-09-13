@@ -6,8 +6,11 @@ import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -31,6 +34,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import coil.compose.SubcomposeAsyncImage
 import com.xxmrk888ytxx.coreandroid.ShareInterfaces.MVI.UiEvent
 import com.xxmrk888ytxx.corecompose.LocalNavigator
 import com.xxmrk888ytxx.pokemondetailsscreen.models.Details
@@ -115,13 +119,15 @@ fun PokemonDetailsForm(details: Details) {
                     .padding(16.dp)
             ) {
                 Column(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp),
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
                         text = text,
-                        style = MaterialTheme.typography.titleMedium
+                        style = MaterialTheme.typography.titleLarge
                     )
                 }
             }
@@ -130,17 +136,20 @@ fun PokemonDetailsForm(details: Details) {
         AsyncImage(
             model = details.pokemonImageUrl,
             contentDescription = "",
-            modifier = Modifier.size(150.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp)
+                .align(Alignment.CenterHorizontally),
         )
 
-        InfoCard(text = "Pokemon's name: ${details.name}")
+        InfoCard(text = stringResource(R.string.pokemon_s_name, details.name))
 
-        InfoCard(text = "Pokemon's height: ${details.height}")
+        InfoCard(text = stringResource(R.string.pokemon_s_height, details.height))
 
-        InfoCard(text = "Pokemon's weight: ${details.weight}")
+        InfoCard(text = stringResource(R.string.pokemon_s_weight, details.weight))
 
         Text(
-            text = "Pokemon's types:",
+            text = stringResource(R.string.pokemon_s_types),
             style = MaterialTheme.typography.titleLarge
         )
 

@@ -56,6 +56,8 @@ class PokemonDetailsViewModel @AssistedInject constructor(
     
     private fun loadDetails() {
         viewModelScope.launch(Dispatchers.IO) {
+            loadingDetailsResult.update { LoadingDetailsResult.Loading }
+
             providePokemonDetailsContract.getDetails(pokemonId)
                 .onSuccess { details ->
                     loadingDetailsResult.update { LoadingDetailsResult.Loaded(details) }

@@ -5,4 +5,8 @@
     <string name="unknown_error">Unknown error</string>
     <string name="an_error_has_occurred">An error has occurred</string>
     <string name="retry">Retry</string>
+    <string name="pokemon_s_name">Pokemon\'s name: %1$s</string>
+    <string name="pokemon_s_height">Pokemon\'s height: %1$s</string>
+    <string name="pokemon_s_weight">Pokemon\'s weight: %1$s</string>
+    <string name="pokemon_s_types">Pokemon\'s types:</string>
 </resources>
