@@ -5,5 +5,5 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 internal data class SpritesResponse(
-    @SerialName("frontDefault") val frontDefault:String
+    @SerialName("front_default") val frontDefault:String
 )

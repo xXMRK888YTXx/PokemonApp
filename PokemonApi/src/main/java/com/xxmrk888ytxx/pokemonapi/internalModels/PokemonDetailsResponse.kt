@@ -10,5 +10,5 @@ internal data class PokemonDetailsResponse(
     @SerialName("height") val height:Int,
     @SerialName("weight") val weight:Int,
     @SerialName("sprites") val sprites:SpritesResponse,
-    @SerialName("types") val types:TypesResponse
+    @SerialName("types") val types:List<TypesResponse>
 )

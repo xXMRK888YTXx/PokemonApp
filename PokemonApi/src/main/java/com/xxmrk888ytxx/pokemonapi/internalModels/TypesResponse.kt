@@ -5,5 +5,5 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class TypesResponse(
-    @SerialName("type") val type:List<TypeResponse>
+    @SerialName("type") val type:TypeResponse
 )

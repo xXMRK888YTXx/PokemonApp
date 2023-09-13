@@ -56,7 +56,7 @@ internal class KtorPokemonApi(
             pokemonImageUrl = responseModel.sprites.frontDefault,
             weight = responseModel.weight,
             height = responseModel.height,
-            pokemonTypes = responseModel.types.type.map { PokemonType(it.name) }
+            pokemonTypes = responseModel.types.map { PokemonType(it.type.name) }
         )
     }
 
