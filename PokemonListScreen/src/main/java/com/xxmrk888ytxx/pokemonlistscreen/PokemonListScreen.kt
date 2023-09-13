@@ -1,6 +1,7 @@
 package com.xxmrk888ytxx.pokemonlistscreen
 
 import android.annotation.SuppressLint
+import androidx.annotation.IdRes
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -43,25 +44,11 @@ fun PokemonListScreen(
         ) {
             when(it) {
                 is FirstDataLoadingResult.Error -> {
-                    Column(
-                        Modifier.fillMaxSize(),
-                        verticalArrangement = Arrangement.spacedBy(16.dp,Alignment.CenterVertically),
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Text(
-                            text = stringResource(R.string.an_error_has_occurred),
-                            style = MaterialTheme.typography.titleMedium
-                        )
 
-                        Text(
-                            text = stringResource(id = it.errorReason),
-                            style = MaterialTheme.typography.titleMedium
-                        )
-
-                        Button(onClick = { onEvent(LocalUiEvent.RetryFirstLoading) }) {
-                            Text(text = stringResource(R.string.retry))
-                        }
-                    }
+                    ErrorForm(
+                        text = it.errorReason,
+                        onRetry = { onEvent(LocalUiEvent.RetryFirstLoading) }
+                    )
                 }
 
 
@@ -119,32 +106,45 @@ fun PokemonListScreen(
 
                         if(screenState.dataPagingLoadingState is PagingLoadingState.Error) {
                             item {
-                                Column(
-                                    Modifier.fillMaxSize(),
-                                    verticalArrangement = Arrangement.spacedBy(16.dp,Alignment.CenterVertically),
-                                    horizontalAlignment = Alignment.CenterHorizontally
-                                ) {
-                                    Text(
-                                        text = stringResource(R.string.an_error_has_occurred),
-                                        style = MaterialTheme.typography.titleMedium
-                                    )
-
-                                    Text(
-                                        text = stringResource(id = screenState.dataPagingLoadingState.errorReason),
-                                        style = MaterialTheme.typography.titleMedium
-                                    )
-
-                                    Button(onClick = { onEvent(LocalUiEvent.LoadNextPage) }) {
-                                        Text(text = stringResource(R.string.retry))
-                                    }
-                                }
+                                ErrorForm(
+                                    text = screenState.dataPagingLoadingState.errorReason,
+                                    onRetry = { onEvent(LocalUiEvent.LoadNextPage) }
+                                )
                             }
                         }
                     }
                 }
             }
+
         }
 
 
+    }
+}
+
+@SuppressLint("ResourceType")
+@Composable
+fun ErrorForm(
+    @IdRes text:Int,
+    onRetry:() -> Unit
+) {
+    Column(
+        Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.spacedBy(16.dp,Alignment.CenterVertically),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = stringResource(R.string.an_error_has_occurred),
+            style = MaterialTheme.typography.titleMedium
+        )
+
+        Text(
+            text = stringResource(id = text),
+            style = MaterialTheme.typography.titleMedium
+        )
+
+        Button(onClick = onRetry) {
+            Text(text = stringResource(R.string.retry))
+        }
     }
 }
