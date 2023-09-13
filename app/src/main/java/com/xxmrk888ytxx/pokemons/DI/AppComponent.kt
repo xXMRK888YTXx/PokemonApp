@@ -3,6 +3,7 @@ package com.xxmrk888ytxx.pokemons.DI
 import android.content.Context
 import com.xxmrk888ytxx.pokemons.DI.modules.DatabaseModule
 import com.xxmrk888ytxx.pokemons.DI.modules.DomainModule
+import com.xxmrk888ytxx.pokemons.DI.modules.LoggerModule
 import com.xxmrk888ytxx.pokemons.DI.modules.PokemonApiModule
 import com.xxmrk888ytxx.pokemons.DI.modules.PokemonDetailsScreenModule
 import com.xxmrk888ytxx.pokemons.DI.modules.PokemonListScreenModule
@@ -17,7 +18,8 @@ import dagger.Component
         DatabaseModule::class,
         DomainModule::class,
         PokemonListScreenModule::class,
-        PokemonDetailsScreenModule::class
+        PokemonDetailsScreenModule::class,
+        LoggerModule::class
     ]
 )
 @AppScope

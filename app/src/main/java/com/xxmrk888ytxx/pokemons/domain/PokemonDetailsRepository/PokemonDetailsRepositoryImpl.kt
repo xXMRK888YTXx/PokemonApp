@@ -1,5 +1,6 @@
 package com.xxmrk888ytxx.pokemons.domain.PokemonDetailsRepository
 
+import com.xxmrk888ytxx.coreandroid.ShareInterfaces.Logger
 import com.xxmrk888ytxx.database.dataSources.PokemonDetailsDataSource
 import com.xxmrk888ytxx.database.dataSources.PokemonListDataSource
 import com.xxmrk888ytxx.database.models.PokemonDetailsLocalModel
@@ -12,7 +13,8 @@ import javax.inject.Inject
 
 class PokemonDetailsRepositoryImpl @Inject constructor(
     private val pokemonDetailsDataSource: PokemonDetailsDataSource,
-    private val pokemonApi: PokemonApi
+    private val pokemonApi: PokemonApi,
+    private val logger: Logger
 ) : PokemonDetailsRepository {
 
     override suspend fun getDetails(id: Int): Result<PokemonDetails> = withContext(Dispatchers.IO)  {
@@ -28,6 +30,7 @@ class PokemonDetailsRepositoryImpl @Inject constructor(
 
             } else Result.success(dataFromLocalDataSource.toRepositoryModel())
         }catch (e:Exception) {
+            logger.error(e,LOG_TAG)
             Result.failure(e)
         }
     }
@@ -46,5 +49,9 @@ class PokemonDetailsRepositoryImpl @Inject constructor(
 
     private fun PokemonDetailsLocalModel.toRepositoryModel() : PokemonDetails {
         return PokemonDetails(id, name, pokemonImageUrl, weight, height, typesName)
+    }
+
+    companion object {
+        private const val LOG_TAG = "PokemonDetailsRepositoryImpl"
     }
 }
