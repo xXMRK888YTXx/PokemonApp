@@ -15,5 +15,5 @@ internal interface PokemonListItemsDao {
     @Insert(
         onConflict = OnConflictStrategy.REPLACE
     )
-    suspend fun insert(pokemonListItemEntity: PokemonListItemEntity) : Int
+    suspend fun insert(pokemonListItemEntity: PokemonListItemEntity)
 }

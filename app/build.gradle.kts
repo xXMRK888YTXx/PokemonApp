@@ -62,6 +62,8 @@ dependencies {
     implementation(project(ProjectModules.CoreCompose))
     implementation(project(ProjectModules.PokemonListScreen))
     implementation(project(ProjectModules.PokemonApi))
+    implementation(project(ProjectModules.Database))
+
 
     //Navigation
     implementation(Deps.Compose.Navigation)

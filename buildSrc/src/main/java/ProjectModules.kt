@@ -4,4 +4,5 @@ object ProjectModules {
     const val CoreCompose = ":CoreCompose"
     const val PokemonListScreen = ":PokemonListScreen"
     const val PokemonApi = ":PokemonApi"
+    const val Database = ":Database"
 }
