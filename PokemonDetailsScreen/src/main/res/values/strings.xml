@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="details_not_found">Details not found</string>
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="unknown_error">Unknown error</string>
+    <string name="an_error_has_occurred">An error has occurred</string>
+    <string name="retry">Retry</string>
+</resources>

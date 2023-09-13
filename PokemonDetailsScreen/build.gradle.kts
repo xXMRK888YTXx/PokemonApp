@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id(Deps.Dagger.DaggerKaptPlugin)
 }
 
 android {
@@ -48,4 +49,9 @@ android {
 
 dependencies {
     implementation(project(ProjectModules.CoreCompose))
+
+    implementation(Deps.Coil.coil)
+
+    kapt(Deps.Dagger.DaggerKaptCompiler)
+
 }

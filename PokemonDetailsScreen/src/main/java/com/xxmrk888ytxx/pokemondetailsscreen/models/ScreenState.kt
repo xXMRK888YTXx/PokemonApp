@@ -1,5 +1,5 @@
 package com.xxmrk888ytxx.pokemondetailsscreen.models
 
 data class ScreenState(
-    val any: Any = Any()
+    val loadingState:LoadingDetailsResult = LoadingDetailsResult.Loading
 )

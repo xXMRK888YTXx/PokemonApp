@@ -3,6 +3,7 @@ package com.xxmrk888ytxx.pokemons.presentation
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.viewModels
+import androidx.compose.runtime.LaunchedEffect
 import androidx.navigation.compose.rememberNavController
 import com.xxmrk888ytxx.goals.extensions.appComponent
 import com.xxmrk888ytxx.goals.extensions.setContentWithTheme
@@ -16,7 +17,7 @@ import com.xxmrk888ytxx.securespace.presentation.pokemonListScreen
 import javax.inject.Inject
 import javax.inject.Provider
 
-class MainActivity : ComponentActivity() {
+internal class MainActivity : ComponentActivity() {
 
     @Inject
     lateinit var activityViewModelFactory: ActivityViewModel.Factory
@@ -35,6 +36,10 @@ class MainActivity : ComponentActivity() {
 
         setContentWithTheme {
             val navController = rememberNavController()
+
+            LaunchedEffect(key1 = navController, block = {
+                activityViewModel.navController = navController
+            })
 
             NavigationHost(
                 navController = navController,
