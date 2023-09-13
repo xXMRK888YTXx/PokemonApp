@@ -50,12 +50,12 @@ fun PokemonListScreen(
                     ) {
                         Text(
                             text = stringResource(R.string.an_error_has_occurred),
-                            style = MaterialTheme.typography.titleLarge
+                            style = MaterialTheme.typography.titleMedium
                         )
 
                         Text(
                             text = stringResource(id = it.errorReason),
-                            style = MaterialTheme.typography.titleLarge
+                            style = MaterialTheme.typography.titleMedium
                         )
 
                         Button(onClick = { onEvent(LocalUiEvent.RetryFirstLoading) }) {
@@ -99,7 +99,7 @@ fun PokemonListScreen(
                                 ) {
                                     Text(
                                         text = item.name,
-                                        style = MaterialTheme.typography.displayLarge
+                                        style = MaterialTheme.typography.displayMedium
                                     )
                                 }
                             }
@@ -126,12 +126,12 @@ fun PokemonListScreen(
                                 ) {
                                     Text(
                                         text = stringResource(R.string.an_error_has_occurred),
-                                        style = MaterialTheme.typography.titleLarge
+                                        style = MaterialTheme.typography.titleMedium
                                     )
 
                                     Text(
                                         text = stringResource(id = screenState.dataPagingLoadingState.errorReason),
-                                        style = MaterialTheme.typography.titleLarge
+                                        style = MaterialTheme.typography.titleMedium
                                     )
 
                                     Button(onClick = { onEvent(LocalUiEvent.LoadNextPage) }) {

@@ -7,6 +7,7 @@ import com.xxmrk888ytxx.coreandroid.ShareInterfaces.MVI.UiEvent
 import com.xxmrk888ytxx.coreandroid.ShareInterfaces.MVI.UiModel
 import com.xxmrk888ytxx.coreandroid.getWithCast
 import com.xxmrk888ytxx.pokemonlistscreen.contracts.ProvidePokemonContract
+import com.xxmrk888ytxx.pokemonlistscreen.exceptions.NoInternetConnection
 import com.xxmrk888ytxx.pokemonlistscreen.models.FirstDataLoadingResult
 import com.xxmrk888ytxx.pokemonlistscreen.models.LocalUiEvent
 import com.xxmrk888ytxx.pokemonlistscreen.models.PagingLoadingState
@@ -18,6 +19,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import java.lang.Exception
 import javax.inject.Inject
 
 class PokemonListViewModel @Inject constructor(
@@ -68,8 +70,8 @@ class PokemonListViewModel @Inject constructor(
                         pagingLoadingState.update { PagingLoadingState.Waiting }
                     }
                 }
-                .onFailure {
-                    pagingLoadingState.update { PagingLoadingState.Error(R.string.unknown_error) }
+                .onFailure { e ->
+                    pagingLoadingState.update { PagingLoadingState.Error(exceptionToErrorReason(e)) }
                 }
         }
     }
@@ -88,11 +90,19 @@ class PokemonListViewModel @Inject constructor(
                         firstDataLoadingResult.update { FirstDataLoadingResult.Success }
                     }
                 }
-                .onFailure {
-                    firstDataLoadingResult.update { FirstDataLoadingResult.Error(R.string.unknown_error) }
+                .onFailure { e ->
+                    firstDataLoadingResult.update { FirstDataLoadingResult.Error(exceptionToErrorReason(e)) }
                 }
         }
     }
+    
+    private fun exceptionToErrorReason(exception: Throwable) : Int {
+        return when(exception) {
+            is NoInternetConnection -> R.string.no_internet_connection
+
+            else -> R.string.unknown_error
+        }
+    } 
 
     init {
         firstDataLoading()

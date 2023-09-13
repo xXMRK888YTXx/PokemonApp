@@ -1,6 +1,7 @@
 package com.xxmrk888ytxx.pokemonlistscreen.contracts
 
 import com.xxmrk888ytxx.pokemonlistscreen.exceptions.NoInternetConnection
+import com.xxmrk888ytxx.pokemonlistscreen.exceptions.UnknownException
 import com.xxmrk888ytxx.pokemonlistscreen.models.PokemonModel
 import kotlinx.coroutines.flow.Flow
 import kotlin.jvm.Throws
@@ -14,6 +15,6 @@ interface ProvidePokemonContract {
     /**
      * Must return true if data for loading is over else false
      */
-    @Throws(NoInternetConnection::class)
+    @Throws(NoInternetConnection::class, UnknownException::class)
     suspend fun loadNext() : Result<Boolean>
 }
