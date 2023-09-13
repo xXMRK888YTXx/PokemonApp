@@ -86,7 +86,7 @@ object Deps {
     object Room {
         private const val version = "2.5.0"
         const val RoomRuntime =  "androidx.room:room-runtime:$version"
-        const val KaptCompiler = "androidx.room:room-compiler:$version"
+        const val compiler = "androidx.room:room-compiler:$version"
         const val RoomKTX = "androidx.room:room-ktx:$version"
         object Test {
             const val RoomTest = "androidx.room:room-testing:$version"
@@ -175,6 +175,10 @@ object Deps {
         private const val version = "2.8.1"
         const val workManager = "androidx.work:work-runtime-ktx:$version"
         const val workManagerTest = "androidx.work:work-testing:$version"
+    }
+
+    object KSP {
+        const val ksp_plugin = "com.google.devtools.ksp"
     }
 
 

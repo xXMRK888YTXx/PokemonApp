@@ -1,7 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id(Deps.Dagger.DaggerKaptPlugin)
+    id(Deps.KSP.ksp_plugin)
 
 }
 
@@ -34,21 +34,19 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = Config.sourceCompatibility
+        targetCompatibility = Config.targetCompatibility
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = Config.jvmTarget
     }
-    kapt {
-        arguments {
-            arg("room.schemaLocation","$projectDir/schemas")
-        }
+    ksp {
+        arg("room.schemaLocation","$projectDir/schemas")
     }
 }
 
 dependencies {
     implementation(Deps.Room.RoomKTX)
     implementation(Deps.Room.RoomRuntime)
-    kapt(Deps.Room.KaptCompiler)
+    ksp(Deps.Room.compiler)
 }
