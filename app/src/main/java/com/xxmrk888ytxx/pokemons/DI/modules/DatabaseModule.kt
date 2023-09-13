@@ -2,6 +2,7 @@ package com.xxmrk888ytxx.pokemons.DI.modules
 
 import android.content.Context
 import com.xxmrk888ytxx.database.Database
+import com.xxmrk888ytxx.database.dataSources.PokemonDetailsDataSource
 import com.xxmrk888ytxx.database.dataSources.PokemonListDataSource
 import com.xxmrk888ytxx.securespace.DI.scopes.AppScope
 import dagger.Module
@@ -19,5 +20,10 @@ class DatabaseModule {
     @Provides
     fun providePokemonListDataSource(database: Database) : PokemonListDataSource {
         return database.pokemonListDataSource
+    }
+
+    @Provides
+    fun providesPokemonDetailsDataSource(database: Database) : PokemonDetailsDataSource {
+        return database.pokemonDetailsDataSource
     }
 }

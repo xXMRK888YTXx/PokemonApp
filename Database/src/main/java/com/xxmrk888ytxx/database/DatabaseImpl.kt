@@ -2,6 +2,8 @@ package com.xxmrk888ytxx.database
 
 import android.content.Context
 import androidx.room.Room
+import com.xxmrk888ytxx.database.dataSources.PokemonDetailsDataSource
+import com.xxmrk888ytxx.database.dataSources.PokemonDetailsDataSourceImpl
 import com.xxmrk888ytxx.database.dataSources.PokemonListDataSource
 import com.xxmrk888ytxx.database.dataSources.PokemonListDataSourceImpl
 
@@ -13,5 +15,9 @@ internal class DatabaseImpl(private val context: Context) : Database {
 
     override val pokemonListDataSource: PokemonListDataSource by lazy {
         PokemonListDataSourceImpl(appDatabase.pokemonListItemsDao)
+    }
+
+    override val pokemonDetailsDataSource: PokemonDetailsDataSource by lazy {
+        PokemonDetailsDataSourceImpl(appDatabase.pokemonDetailsDao,appDatabase.pokemonTypesDao)
     }
 }
