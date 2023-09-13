@@ -33,6 +33,10 @@ class PokemonListViewModel @Inject constructor(
             LocalUiEvent.LoadNextPage -> nextPage()
 
             LocalUiEvent.RetryFirstLoading -> firstDataLoading()
+
+            is LocalUiEvent.RequestDetails -> {
+                event.navigator.toPokemonDetailsScreen(event.id)
+            }
         }
     }
 

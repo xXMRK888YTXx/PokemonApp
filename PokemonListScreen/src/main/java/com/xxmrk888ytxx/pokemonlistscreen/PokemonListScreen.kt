@@ -3,6 +3,7 @@ package com.xxmrk888ytxx.pokemonlistscreen
 import android.annotation.SuppressLint
 import androidx.annotation.IdRes
 import androidx.compose.animation.AnimatedContent
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,7 +11,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -28,6 +28,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.xxmrk888ytxx.coreandroid.ShareInterfaces.MVI.UiEvent
+import com.xxmrk888ytxx.corecompose.LocalNavigator
 import com.xxmrk888ytxx.pokemonlistscreen.models.FirstDataLoadingResult
 import com.xxmrk888ytxx.pokemonlistscreen.models.LocalUiEvent
 import com.xxmrk888ytxx.pokemonlistscreen.models.PagingLoadingState
@@ -41,6 +42,8 @@ fun PokemonListScreen(
     onEvent:(UiEvent) -> Unit
 ) {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
+
+    val navigator = LocalNavigator.current
 
 
     Scaffold(
@@ -98,6 +101,7 @@ fun PokemonListScreen(
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(16.dp)
+                                    .clickable { onEvent(LocalUiEvent.RequestDetails(navigator,item.id)) }
                             ) {
                                 Column(
                                     modifier = Modifier.fillMaxWidth(),
